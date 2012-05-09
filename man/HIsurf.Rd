@@ -35,7 +35,7 @@ A \code{size x size} matrix of log likelihoods for all combinations of ancestry 
 \references{
 Fitzpatrick, B. M. 2008. Hybrid dysfunction: Population genetic and quantitative genetic perspectives. American Naturalist 171:491-198.
 
-Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers.
+Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers. BMC Evolutionary Biology 12:131. http://www.biomedcentral.com/1471-2148/12/131
 
 Lynch, M. 1991. The genetic interpretation of inbreeding depression and outbreeding depression. Evolution 45:622-629.
 }
@@ -70,20 +70,6 @@ BS.surf.5 # the maximum likelihood is very near the center (S ~ H ~ 0.5)
 # title(xlab=expression(italic(S)),ylab=expression(italic(H[I])),cex.lab=1.5)
 # lines(c(0,.5,1,0),c(0,1,0,0),lty=2,lwd=2)
 
-## The function is currently defined as
-function(G,P,type,size){
-	S <- H <- seq(from=0,to=1,length.out=size)
-	surf <- matrix(NA,ncol=size,nrow=size)
-	for(i in 1:size){
-		for(j in 1:size){
-			surf[i,j] <- HILL(c(S[i],H[j]),G,P,type)
-			}}
-	for(i in 1:size){
-		for(j in 1:size){
-			if(H[j]>min(2*S[i],2-2*S[i])) surf[i,j] <- NA
-		}}
-surf
-	}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

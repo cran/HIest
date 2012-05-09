@@ -3,24 +3,24 @@
 \title{
 Fit a genomic cline using maximum likelihood}
 \description{
-Fit a genomic cline and compare it to a null expectation. Choices are Barton cline, Beta cline, and Richards cline. This function is used by \code{\link{Cline.fit}} to compare clines fit to a data set.}
+Fit a genomic cline and compare it to a null expectation. Choices are logit-logistic cline, Barton cline, Beta cline, multinomial regression, binomial regression, and Richards cline. This function is used by \code{\link{Cline.fit}} to compare clines fit to a data set.}
 \usage{
-gcline.fn(x, n, y, start, model = "Beta", method = "L-BFGS-B", iterations = 99,
+gcline.fn(x, n, y, start, model = "logit-logit", method = "L-BFGS-B", iterations = 99,
  SD = rep(0.01, length(start)), headstart = FALSE,Grid = TRUE)
 }
 \arguments{
   \item{x}{
 A numeric vector of genome-wide mean ancestry (or any independent variable on the unit interval).}
   \item{n}{
-A numeric vector of sample sizes for each value in \code{x}}
+A numeric vector of sample sizes for each value in \code{x}. E.g., for individual diploid data, \code{n=2}.}
   \item{y}{
-A numeric vector containing the dependent variable: usually an allele frequency for each \code{x}
+A numeric vector containing the dependent variable: usually an allele count for each \code{x}
 }
   \item{start}{
-A vector of starting values: \eqn{\mu} and \eqn{\nu} for the Beta cline, \eqn{a} and \eqn{b} for the Barton cline, and \eqn{U}, \eqn{L}, \eqn{m}, and \eqn{b} for the Richards cline.
+A vector of starting values: \eqn{u} and \eqn{v} for the logit-logistic, \eqn{\mu} and \eqn{\nu} for the Beta cline, \eqn{a} and \eqn{b} for the Barton cline, and \eqn{U}, \eqn{L}, \eqn{m}, and \eqn{b} for the Richards cline.
 }
   \item{model}{
-Character string indicating which cline function to fit: \code{"Beta"}, \code{"Barton"}, or \code{"Richards"}
+Character string indicating which cline function to fit:\code{"logit-logit"}, \code{"Beta"}, \code{"Barton"}, \code{"multinom"}, \code{"logistic"} or \code{"Richards"}
 }
   \item{method}{
 Character string indicating which algorithm to use to find the MLE: \code{"L-BFGS-B"} and \code{"SANN"} are used by the native optimization function \code{\link{optim}}, \code{"mcmc"} is a Markov Chain Monte Carlo using Metropolis-Hastings sampling. If \code{"mcmc"} is used, the following four items are also used.
@@ -43,7 +43,7 @@ A list:
 	\item{model }{The cline function used}
     \item{method }{The optimization method used}
     \item{estimates}{Maximum likelihood parameter estimates}
-    \item{lnL}{The maximum likelihood and the likelihood of the data given the null model \code{E(y)=x}}
+    \item{lnL}{The maximum likelihood and the likelihood of the data given the naive null model \code{E(y)=x}}
     \item{k}{The number of fitted coefficients}
     \item{AICc}{Akaike's information criterion with sample size correction
     	}
@@ -63,7 +63,7 @@ x <- 0:50/50          # hypothetical genomic ancestry proportions
 y <- rbinom(50,2,x)   # random diploid genotypes for a diagnostic marker
 n=rep(2,50)			  # sample size is two alleles per diploid individual
 
-gcline.fn(x=x,n=n,y=y,start=c(.5,2),model="Beta")
+gcline.fn(x=x,n=n,y=y,start=c(.5,2),model="logit-logit")
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

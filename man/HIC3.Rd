@@ -32,7 +32,7 @@ A matrix with 10 named columns for each individual
 
 }
 \references{
-Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers.
+Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers. BMC Evolutionary Biology 12:131. http://www.biomedcentral.com/1471-2148/12/131
 }
 \author{
 Ben Fitzpatrick

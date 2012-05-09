@@ -61,7 +61,7 @@ A data frame with one row for each individual and three columns:
 \references{
 Fitzpatrick, B. M. 2008. Hybrid dysfunction: Population genetic and quantitative genetic perspectives. American Naturalist 171:491-198.
 
-Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers.
+Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers. BMC Evolutionary Biology 12:131. http://www.biomedcentral.com/1471-2148/12/131
 
 Fitzpatrick, B. M., J. R. Johnson, D. K. Kump, H. B. Shaffer, J. J. Smith, and S. R. Voss. 2009. Rapid fixation of non-native alleles revealed by genome-wide SNP analysis of hybrid tiger salamanders. BMC Evolutionary Biology 9:176. http://www.biomedcentral.com/1471-2148/9/176
 

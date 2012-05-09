@@ -24,22 +24,24 @@ Maintainer: <benfitz@utk.edu>
 \references{
 Fitzpatrick, B. M. 2008. Hybrid dysfunction: Population genetic and quantitative genetic perspectives. American Naturalist 171:491-198.
 
-Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers.
+Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers. BMC Evolutionary Biology 12:131. http://www.biomedcentral.com/1471-2148/12/131
 
-Fitzpatrick, B. M. 2012. Alternative forms for genomic clines.
+Fitzpatrick, B. M. Alternative forms for genomic clines (in review)
 
 Lynch, M. 1991. The genetic interpretation of inbreeding depression and outbreeding depression. Evolution 45:622-629.
 }
 \keyword{ package }
 %\seealso{}
 \examples{
+	\dontrun{
 data(Bluestone)
 
 ######################
 # Fit genomic clines #
 ######################
 
-BS.fit <- Cline.fit(Bluestone)
+data(Bluestone)
+BS.fit <- Cline.fit(Bluestone[,1:12],model=c("logit.logistic","Barton"))
 Cline.plot(BS.fit)
 
 ########################################
@@ -112,5 +114,5 @@ P2=rep(c(0,1,0),12), P3=rep(c(0,0,1),12))
 # shortcut for diagnostic markers
 Est <- HIC3(G,P)
 CL <- thirdclass(G,P)
-
+}
 }

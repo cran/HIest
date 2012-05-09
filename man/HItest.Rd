@@ -44,7 +44,7 @@ Edwards, A. W. F. 1972. Likelihood. Cambridge University Press, Cambridge.
 
 Fitzpatrick, B. M. 2008. Hybrid dysfunction: Population genetic and quantitative genetic perspectives. American Naturalist 171:491-198.
 
-Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers.
+Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers. BMC Evolutionary Biology 12:131. http://www.biomedcentral.com/1471-2148/12/131
 
 Hilborn, R., and M. Mangel. 1997. The ecological detective: Confronting models with data. Princeton University Press, New Jersey.
 
@@ -60,6 +60,7 @@ Ben Fitzpatrick
 \code{\link{HIest}} for maximum likelihood estimation of S and H, \code{\link{HIsurf}} for a likelihood surface, \code{\link{HIclass}} for likelihoods of early generation hybrid classes, \code{\link{HILL}} for the basic likelihood function.
 }
 \examples{
+	\dontrun{
 data(Bluestone)
 Bluestone <- replace(Bluestone,is.na(Bluestone),-9)
 # parental allele frequencies (assumed diagnostic)
@@ -89,17 +90,7 @@ table(BS.test$Best.class,BS.test$c2)
 BS.test[BS.test$c2,]
 # in only one case was the F2 classification a better fit (based on AIC) than the
 # continuous model.
-
-## The function is currently defined as
-function(class,MLE,thresholds=c(2,2)){
-	LLC <- apply(class[,1:6],1,max)
-	LLM <- MLE[,3]
-	dAIC <- (2*1-2*LLC) - (2*2-2*LLM)
-	c1 <- class$LLD>2
-	c2 <- (LLM-LLC)<2
-	data.frame(S=MLE[,1],H=MLE[,2],Best.class = class$Best,LL.class=LLC,
-		LLD.class=class$LLD,LL.max=MLE[,3],dAIC,c1,c2)
-	}
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

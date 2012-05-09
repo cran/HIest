@@ -76,7 +76,7 @@ A matrix with 10 named columns for each individual, containing estimated genomic
 
 }
 \references{
-Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers.
+Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers. BMC Evolutionary Biology 12:131. http://www.biomedcentral.com/1471-2148/12/131
 }
 \author{
 Ben Fitzpatrick
@@ -86,6 +86,7 @@ Ben Fitzpatrick
 \code{\link{HIC3}} calculates closed-form maximum likelihood estimates for diagnostic marker data. \code{\link{thirdclass}} and \code{\link{HItest3}} evaluate simple classification of three-way hybrids into parental, F1, F2, and backcross categories. For conventional two-way hybrid zone analyses, see \code{\link{HIC}, \link{HIest}, \link{HIclass}, \link{HItest}}.
 }
 \examples{
+	\dontrun{
 	## all possible 2-way crosses after 2 generations
 G <- rbind(
 rep(1,12),rep(1,12),               # parental 1
@@ -114,7 +115,7 @@ mle.c <- HIC3(G,P)
 # compare the optimization (mle.o) to the closed-form (mle.c): 
 # 99 iterations is not enough to converge on the known true values. 
 # Try setting surf=TRUE and/or increasing iterations. 
-
+}
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

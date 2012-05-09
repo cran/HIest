@@ -25,7 +25,9 @@ A matrix with three named columns is returned.
 }
 \references{
 Fitzpatrick, B. M. 2008. Hybrid dysfunction: Population genetic and quantitative genetic perspectives. American Naturalist 171:491-198.
-Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers.
+
+Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers. BMC Evolutionary Biology 12:131. http://www.biomedcentral.com/1471-2148/12/131
+
 Lynch, M. 1991. The genetic interpretation of inbreeding depression and outbreeding depression. Evolution 45:622-629.
 }
 \author{
@@ -40,23 +42,6 @@ Ben Fitzpatrick
 G <- matrix(rbinom(100,2,.5),nrow=10)
 HIC(G)
 
-## The function is currently defined as
-function(G){
-	n <- nrow(G)
-	k <- ncol(G)
-	if(is.null(names(G))){Locus <- 1:k}else{Locus=names(G)}
-	P <- data.frame(Locus=Locus,Allele="1",P1=1,P2=0)
-	G <- replace(G,G<0,NA)
-	out <- matrix(nrow=n,ncol=3)
-	out[,1] <- rowMeans(G,na.rm=TRUE)/2
-	out[,2] <- rowMeans(G==1,na.rm=TRUE)
-	G <- replace(G,is.na(G),-9)
-	for(i in 1:n){
-		out[i,3] <- HILL(out[i,1:2],G[i,],P,type="allele.count")
-	}
-	colnames(out) <- c("S","H","logLik")
-	out
-}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

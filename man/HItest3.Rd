@@ -36,7 +36,7 @@ A data matrix with 7 named columns and one row per individual.
 \item{c2 }{Logical: \code{TRUE} if the best-fit class is WITHIN \code{thresholds[2]} log-likelihood units of the continuous model MLE.}
 }
 \references{
-Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers.
+Fitzpatrick, B. M. 2012. Estimating ancestry and heterozygosity of hybrids using molecular markers. BMC Evolutionary Biology 12:131. http://www.biomedcentral.com/1471-2148/12/131
 }
 \author{
 Ben Fitzpatrick
@@ -45,6 +45,7 @@ Ben Fitzpatrick
 \code{\link{threeway}} finds maximum likelihood estimates for non-diagnostic marker data. \code{\link{thirdclass}} evaluates simple classification of three-way hybrids into parental, F1, F2, and backcross categories. For conventional two-way hybrid zone analyses, see \code{\link{HIC}, \link{HIest}, \link{HIclass}, \link{HItest}}.
 }
 \examples{
+	\dontrun{
 	## all possible 2-way crosses after 2 generations
 G <- rbind(
 rep(1,12),rep(1,12),               # parental 1
@@ -85,18 +86,7 @@ Est3 <- HIC3(G3,P)
 Class3 <- thirdclass(G3,P)
 HItest3(Class3,Est3) 	# now you might have a few that look like F2's 
 						# between 1 and 2 (c110200)
-
-## The function is currently defined as
-function (class, MLE, thresholds = c(2, 1)) 
-{
-    LLC <- apply(class[, 1:15], 1, max)
-    LLM <- MLE$logLik
-    dAIC <- (2 * 1 - 2 * LLC) - (2 * 2 - 2 * LLM)
-    c1 <- class$LLD > thresholds[1]
-    c2 <- (LLM - LLC) < thresholds[2]
-    data.frame(Best.class = class$Best, LL.class = LLC, LLD.class = class$LLD, 
-        LL.max = MLE$logLik, dAIC, c1, c2)
-  }
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
